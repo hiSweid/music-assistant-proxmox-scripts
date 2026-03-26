@@ -23,10 +23,7 @@ function update_script() {
   check_container_storage
   check_container_resources
   msg_info "Updating ${APP}"
-  pct exec "$CT_ID" -- bash -c "
-    /opt/music-assistant/bin/pip install --upgrade 'music-assistant[server]' && \
-    systemctl restart music-assistant.service
-  "
+  pct exec "$CT_ID" -- bash -c "/opt/music-assistant/bin/pip install --upgrade music-assistant && systemctl restart music-assistant.service"
   msg_ok "Updated ${APP}"
   exit
 }
